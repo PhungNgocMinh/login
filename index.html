@@ -1,0 +1,58 @@
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Welcome back, sleepy.</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <!-- hidden switch first so we can target the whole wrap with "~" -->
+  <input id="switch" type="checkbox" />
+  <div class="wrap">
+    <div class="left">
+      <div>
+        <img class="sun" src="/Image/sun.gif">
+      </div>
+      <div class="moon"></div>
+      <div class="cloud"></div>
+    </div>
+    <div class="center">
+      <div class="welcome">
+        <h1 class="welcome">Welcome to COMFORTABLE</h1>
+      </div>
+      <form class="login-form" action="#" onsubmit="return false;">
+        <h2>Let's make your bed experience great together!</h2>
+        <input type="text" placeholder="Username" autocomplete="username" />
+        <input type="password" placeholder="Password" autocomplete="current-password" />
+        <button type="submit">Sign in</button>
+        <div class="glow" aria-hidden="true"></div>
+      </form>
+    </div>
+
+    <div class="right">
+      <!-- glow area covers right half for soft light -->
+      <div class="glow" aria-hidden="true"></div>
+
+      <!-- clicking this label toggles #switch -->
+      <label for="switch" class="lamp-label" aria-hidden="false">
+        <div class="lamp" role="button" aria-pressed="false" tabindex="0">
+          <div class="lamp-bulb" aria-hidden="true">
+            <div class="filament"></div>
+          </div>
+          <div class="switch-rope"></div>
+          <div class="switch-rope"></div>
+          <div class="base"></div>
+          <div class="lamp-caption">I'm a lamp</div>
+        </div>
+      </label>
+      <div>
+        <img class="duolingo" src="Image/duolingo.png">
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
