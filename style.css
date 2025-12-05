@@ -19,8 +19,9 @@ body {
 }
 
 /* Hidden checkbox placed BEFORE layout so we can use general sibling selectors */
-#switch {
+#switch, #sign-up-switch {
   display: none;
+  opacity: 0;
 }
 
 .wrap {
@@ -81,6 +82,11 @@ body {
     background: #c5e7ff;
     opacity: 0.1;
 }
+.pet {
+    width: 200px;
+    height: 200px;
+    opacity: 0;
+}
 
 /* lamp container is inside label so clicking it toggles the checkbox */
 .lamp-label {
@@ -91,6 +97,9 @@ body {
   width: 160px;
   height: 320px;
   user-select: none;
+}
+#sign-up-option-switch {
+  cursor: pointer;
 }
 
 .lamp {
@@ -140,7 +149,20 @@ body {
   transition: opacity 0.45s ease, transform 0.45s ease;
 }
 
+.speech-bubble {
+  position: absolute;
+  width: 100px;
+  height: 120px;
+  opacity: 0;
+}
+.freddy {
+  width: 150px;
+  height: 150px;
+  opacity: 0.1;
+  z-index: -10;
+}
 .duolingo {
+  position: absolute;
   width: 120px;
   height: 100px;
   opacity: 0;
@@ -159,7 +181,7 @@ body {
 }
 
 /* Login form: initially hidden with opacity and pointer-events disabled */
-.login-form {
+.login-form, .signup-form {
   width: 100%;
   max-width: 360px;
   background: rgba(255, 255, 255, 0.04);
@@ -173,13 +195,18 @@ body {
   transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.9, 0.2, 1);
   z-index: 2;
 }
-
-.login-form h2 {
+.signup-form {
+  position: absolute;
+  /* Initially hidden off-screen and invisible */
+  transform: translateY(30px) scale(0.8);
+  opacity: 0;
+}
+.login-form h2, .signup-form h2 {
   margin: 0 0 16px 0;
   color: #fff;
   font-size: 20px;
 }
-.login-form input {
+.login-form input, .signup-form input {
   width: 100%;
   padding: 12px 14px;
   margin: 8px 0;
@@ -190,10 +217,12 @@ body {
   outline: none;
   font-size: 14px;
 }
-.login-form input:focus {
-  border: 3px solid rgba(255, 213, 74, 0.8);
+
+.login-form input:hover, .login-form button:hover, .signup-form input:hover, .signup-form button:hover {
+  background-color: rgba(255, 187, 0, 0.8);
+  transition-duration: 0.5s;
 }
-.login-form button {
+.login-form button, .signup-form button {
   width: 100%;
   margin-top: 12px;
   padding: 12px 14px;
@@ -212,9 +241,13 @@ body {
 
 /* --- When checked: light ON --- */
 /* Because checkbox is before .wrap, we use general sibling selector */
+#switch:checked ~ .wrap #sign-up-switch {
+  display: contents;
+}
 #switch:checked ~ .wrap {
   background-color: hsl(197, 85%, 72%);
   color: #171717;
+  transition-delay: 0.5s;
   transition-duration: 3s;
 }
 #switch:checked ~ .wrap .cloud {
@@ -223,7 +256,7 @@ body {
 }
 #switch:checked ~ .wrap .moon {
   opacity: 0;
-  transform: translateY(500px);
+  transform: translateY(200px);
   transition: 3s;
 }
 #switch:checked ~ .wrap .sun {
@@ -231,10 +264,30 @@ body {
   transform: translateY(-100px);
   transition: 3s;
 }
+@keyframes tilt {
+  50% {transform: rotate(60deg);}
+}
+#switch:checked ~ .wrap .pet {
+  opacity: 1;
+  transition: 3s;
+  animation-name: tilt;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
 #switch:checked ~ .wrap .welcome {
   opacity: 1;
   transform: translateY(-20px) scale(1.2);
   transition-duration: 3s;
+}
+#switch:checked ~ .wrap .freddy {
+  opacity: 1;
+  transform: translateY(100px) scale(3);
+  transition-duration: 0.2s;
+}
+#switch:checked ~ .wrap .speech-bubble {
+  opacity: 1;
+  transition-delay: 3s;
+  transition-duration: 1s;
 }
 #switch:checked ~ .wrap .duolingo {
   opacity: 1;
@@ -296,4 +349,15 @@ body {
     width: 120px;
     height: 220px;
   }
+}
+
+#sign-up-switch:checked ~ .wrap .login-form {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-30px) scale(0.8);
+}
+#sign-up-switch:checked ~ .wrap .signup-form {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
 }
