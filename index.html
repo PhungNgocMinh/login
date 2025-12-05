@@ -11,24 +11,34 @@
 <body>
   <!-- hidden switch first so we can target the whole wrap with "~" -->
   <input id="switch" type="checkbox" />
+  <input id="sign-up-switch" type="checkbox">
   <div class="wrap">
     <div class="left">
       <div>
-        <img class="sun" src="Image/sun.gif">
+        <img class="sun" src="/Image/sun.gif">
       </div>
       <div class="moon"></div>
       <div class="cloud"></div>
+      <div>
+        <img class="pet" src="Image/pet.png">
+      </div>
     </div>
     <div class="center">
       <div class="welcome">
-        <h1 class="welcome">Welcome to COMFORTABLE</h1>
+        <h1 class="welcome">COMFORTABLE</h1>
       </div>
       <form class="login-form" action="#" onsubmit="return false;">
-        <h2>Let's make your bed experience great together!</h2>
-        <input type="text" placeholder="Username" autocomplete="username" />
-        <input type="password" placeholder="Password" autocomplete="current-password" />
-        <button type="submit">Sign in</button>
+        <h2>Welcome back!</h2>
+        <input id="login_username" type="text" placeholder="Username" autocomplete="username" />
+        <input id="login_password" type="password" placeholder="Password" autocomplete="current-password" />
+        <button  type="submit">Sign in</button>
         <div class="glow" aria-hidden="true"></div>
+      </form>
+      <form class="signup-form" action="#" onsubmit="return false;">
+        <h2 >Hello friends!</h2>
+        <input id="signup_username" type="text" placeholder="Your new name">
+        <input id="signup-password" placeholder="Your password">
+        <button type="submit">Sign up</button>
       </form>
     </div>
 
@@ -48,12 +58,17 @@
           <div class="lamp-caption">I'm a lamp</div>
         </div>
       </label>
+      <label id="sign-up-option-switch" for="sign-up-switch" aria-hidden="false">
+        <div>
+          <img class="freddy" src="Image/freddy.png">
+          <img class="speech-bubble" src="Image/speech-bubble.png">
+        </div>
+      </label>
       <div>
         <img class="duolingo" src="Image/duolingo.png">
       </div>
     </div>
   </div>
 </body>
-
 
 </html>
